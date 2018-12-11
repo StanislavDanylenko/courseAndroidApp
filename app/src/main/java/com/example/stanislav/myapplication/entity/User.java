@@ -3,9 +3,8 @@ package com.example.stanislav.myapplication.entity;
 import com.example.stanislav.myapplication.entity.enumeration.Localization;
 import com.example.stanislav.myapplication.entity.enumeration.RoleUser;
 import com.example.stanislav.myapplication.entity.enumeration.TypeOfUser;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.HashSet;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import lombok.AccessLevel;
@@ -19,20 +18,24 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
 public class User {
 
     private Long id;
     private String email;
 
+    private String firstName;
+    private String lastName;
+    private String patronymic;
     private Long defaultPopulatedPoint;
 
-    @JsonIgnore
+    private Boolean isActive;
+
     private String password;
 
     private Localization localization;
-
-    private RoleUser roles;
+    private TypeOfUser type;
+    private Set<RoleUser> roles;
 
 }

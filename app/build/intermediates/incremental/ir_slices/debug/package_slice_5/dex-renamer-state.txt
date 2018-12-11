@@ -1,4 +1,4 @@
-#Tue Dec 11 10:28:00 EET 2018
+#Tue Dec 11 21:10:28 EET 2018
 base.0=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/5
 path.0=classes.dex
 renamed.0=classes.dex

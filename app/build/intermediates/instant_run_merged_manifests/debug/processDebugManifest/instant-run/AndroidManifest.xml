@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.stanislav.myapplication.MainActivity" >
+        <activity android:name="com.example.stanislav.myapplication.activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.stanislav.myapplication.LoginActivity"
+            android:name="com.example.stanislav.myapplication.activity.LoginActivity"
             android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="com.stanislav.SHOW_LOGIN_ACTIVITY" />
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.stanislav.myapplication.OrderActivity"
+            android:name="com.example.stanislav.myapplication.activity.OrderActivity"
             android:label="@string/title_activity_order"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
