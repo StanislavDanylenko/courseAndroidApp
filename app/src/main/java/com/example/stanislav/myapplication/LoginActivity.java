@@ -31,14 +31,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
+import com.example.stanislav.myapplication.entity.User;
+import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String ACTION_TO_MAIN ="com.stanislav.SHOW_CHANGE_URL_ACTIVITY";
 
     public static final String SERVER_URL = "serverUrl";
-    private static String URL_SERVER = "http://7dfad91e.ngrok.io";
+    private static String BASE_URL = "http://82e265cf.ngrok.io";
     SharedPreferences sharedPreferences;
 
     public void goToChangeUrl (View view) {
@@ -61,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void loadText() {
         sharedPreferences = getPreferences(MODE_PRIVATE);
-        URL_SERVER = sharedPreferences.getString(SERVER_URL, "");
+        BASE_URL = sharedPreferences.getString(SERVER_URL, "");
     }
 
     /**
@@ -210,7 +211,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password, URL_SERVER);
+            mAuthTask = new UserLoginTask(email, password, BASE_URL);
             mAuthTask.execute((Void) null);
         }
     }
@@ -338,30 +339,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                //Thread.sleep(2000);
                 // todo request here
 
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        .addConverterFactory(JacksonConverterFactory.create())
+                        .build();
 
-                /*CloseableHttpClient httpclient = HttpClients.createDefault();
+                UserService userService = retrofit.create(UserService.class);
+                Response<User> user = userService.loginUser(mEmail, mPassword).execute();
+                User userEntity = user.body();
+                System.out.println(userEntity.toString());
 
-                HttpPost httpPost = new HttpPost(url);
-                List <NameValuePair> nvps = new ArrayList <NameValuePair>();
-                nvps.add(new BasicNameValuePair("username", mEmail));
-                nvps.add(new BasicNameValuePair("password", mPassword));
-                httpPost.setEntity(new UrlEncodedFormEntity(nvps));
-                CloseableHttpResponse response2 = httpclient.execute(httpPost);
-
-
-
-                // Getting the status code.
-                int statusCode = response2.getStatusLine().getStatusCode();
-                String responseBody = EntityUtils.toString(response2.getEntity());
-                System.out.println(responseBody);
-
-                if (statusCode == 200) {
+                if (userEntity != null) {
                     return true;
                 }
-*/
+
             } catch (Exception e) {
                 return false;
             }

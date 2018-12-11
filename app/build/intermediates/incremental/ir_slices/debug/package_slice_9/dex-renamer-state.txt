@@ -1,4 +1,4 @@
-#Mon Dec 10 23:25:06 EET 2018
-base.0=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\9
+#Tue Dec 11 10:28:00 EET 2018
+base.0=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/9
 path.0=classes.dex
 renamed.0=classes.dex
