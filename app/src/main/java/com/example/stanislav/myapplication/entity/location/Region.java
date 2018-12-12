@@ -23,15 +23,12 @@ public class Region {
     @NonNull
     private String name;
 
-    private Country country;
-
     private List<PopulatedPoint> populatedPoints = new ArrayList<>();
 
     @Override
     public String toString() {
         return "Region{" +
                 "name='" + name + '\'' +
-                ", country=" + country.getName() +
                 ", populatedPoints=" + populatedPoints +
                 '}';
     }

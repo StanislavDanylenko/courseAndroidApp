@@ -34,7 +34,15 @@ import android.widget.TextView;
 import com.example.stanislav.myapplication.R;
 import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
+import com.example.stanislav.myapplication.entity.location.Country;
+import com.example.stanislav.myapplication.entity.model.LocalProposalUserModel;
+import com.example.stanislav.myapplication.entity.model.UpdatePasswordModel;
 import com.example.stanislav.myapplication.entity.model.UserCredentialsModel;
+import com.example.stanislav.myapplication.entity.proposal.LocalProposal;
+import com.example.stanislav.myapplication.entity.proposal.Proposal;
+import com.example.stanislav.myapplication.entity.proposal.UserOrder;
+import com.example.stanislav.myapplication.retrofit.interfaze.LocationSevice;
+import com.example.stanislav.myapplication.retrofit.interfaze.ProposalService;
 import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
 
 import java.util.ArrayList;
@@ -55,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static final String ACTION_TO_MAIN ="com.stanislav.SHOW_CHANGE_URL_ACTIVITY";
 
     public static final String SERVER_URL = "serverUrl";
-    private static String BASE_URL = "http://5b162a3f.ngrok.io";
+    private static String BASE_URL = "http://8eb489af.ngrok.io";
     SharedPreferences sharedPreferences;
 
     public void goToChangeUrl (View view) {
@@ -364,13 +372,94 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 // ------------------------------------------------
 
                 UserCredentialsModel model = new UserCredentialsModel(mEmail, mPassword);
-                Response<User> userResponse = userService.getUser(model, userAuthEntity.getId()).execute();
+                // todo here get Full User request
+                /*Response<User> userResponse = userService.getUser(model, userAuthEntity.getId()).execute();
                 User user = userResponse.body();
                 System.out.println(user.toString());
 
-                if (user != null) {
+                if (user == null) {
+                    return false;
+                }*/
+                // todo here get Full Location request
+                /*LocationSevice locationSevice = retrofit.create(LocationSevice.class);
+                Response<List<Country>> countryListResponse = locationSevice.getUser(model).execute();
+                List<Country> countryList = countryListResponse.body();
+                System.out.println(countryList);
+
+                if (countryList != null) {
                     return true;
-                }
+                }*/
+                // todo here get populated point Proposals
+                /*ProposalService proposalService = retrofit.create(ProposalService.class);
+                Response<List<LocalProposal>> listProposalResponse = proposalService.getProposals(model, userAuthEntity.getDefaultPopulatedPoint()).execute();
+                List<LocalProposal> proposalList = listProposalResponse.body();
+                System.out.println(proposalList);
+
+                if (proposalList != null) {
+                    return true;
+                }*/
+                // todo here get user status Order
+               /* ProposalService proposalService = retrofit.create(ProposalService.class);
+                Response<List<UserOrder>> listProposalResponse = proposalService.getStatusProposals(model, userAuthEntity.getId(), "STATUS").execute();
+                List<UserOrder> proposalList = listProposalResponse.body();
+                System.out.println(proposalList);
+
+                if (proposalList != null) {
+                    return true;
+                }*/
+                // todo here get user status Order
+               /* ProposalService proposalService = retrofit.create(ProposalService.class);
+                Response<List<UserOrder>> listProposalResponse = proposalService.getStatusProposals(model, userAuthEntity.getId(), "STATUS").execute();
+                List<UserOrder> proposalList = listProposalResponse.body();
+                System.out.println(proposalList);
+
+                if (proposalList != null) {
+                    return true;
+                }*/
+                // todo here get user status Order
+                /*ProposalService proposalService = retrofit.create(ProposalService.class);
+                Response<List<UserOrder>> listProposalResponse = proposalService.getAllUsersProposals(model, userAuthEntity.getId()).execute();
+                List<UserOrder> proposalList = listProposalResponse.body();
+                System.out.println(proposalList);
+
+                if (proposalList != null) {
+                    return true;
+                }*/
+                // todo here update user
+                /*user.setFirstName("changedFirstName");
+
+                Response<User> userUpdateResponse = userService.updateUser(user, userAuthEntity.getId()).execute();
+                User updatedUser = userUpdateResponse.body();
+                System.out.println(updatedUser.toString());
+
+                if (updatedUser != null) {
+                    return true;
+                }*/
+                // todo here update password
+                /*UpdatePasswordModel passwordModel = new UpdatePasswordModel(user.getId(), mPassword, "us");
+
+                Response<User> userUpdateResponse = userService.updatePassword(passwordModel).execute();
+                User updatedUser = userUpdateResponse.body();
+                System.out.println(updatedUser.toString());
+
+                if (updatedUser != null) {
+                    return true;
+                }*/
+                // todo here add Order
+                /*LocalProposalUserModel proposalModel = new LocalProposalUserModel();
+                proposalModel.setPopulatedPointId(userAuthEntity.getDefaultPopulatedPoint());
+                proposalModel.setTargetCoordinates(new Double[] {50.7, 78.3});
+                proposalModel.setUserId(userAuthEntity.getId());
+                proposalModel.setProposalId(1L);
+
+                ProposalService proposalService = retrofit.create(ProposalService.class);
+                Response<UserOrder> proposalResponse = proposalService.addProposal(proposalModel).execute();
+                UserOrder proposal = proposalResponse.body();
+                System.out.println(proposal);
+
+                if (proposal != null) {
+                    return true;
+                }*/
 
 
             } catch (Exception e) {

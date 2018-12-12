@@ -21,14 +21,11 @@ public class PopulatedPoint {
     @NonNull
     private String name;
 
-    private Region region;
-
 
     @Override
     public String toString() {
         return "PopulatedPoint{" +
                 "name='" + name + '\'' +
-                ", region=" + region.getName() +
                 '}';
     }
 
