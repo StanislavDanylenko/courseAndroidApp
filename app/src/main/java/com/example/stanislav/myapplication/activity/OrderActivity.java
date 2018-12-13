@@ -27,7 +27,10 @@ import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
 import com.example.stanislav.myapplication.entity.location.Country;
 import com.example.stanislav.myapplication.entity.model.UserCredentialsModel;
+import com.example.stanislav.myapplication.entity.proposal.OperationStatus;
+import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 import com.example.stanislav.myapplication.retrofit.interfaze.LocationSevice;
+import com.example.stanislav.myapplication.retrofit.interfaze.ProposalService;
 import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
 
 import java.util.List;
@@ -44,6 +47,8 @@ public class OrderActivity extends AppCompatActivity
     private UserAuth credentials;
     private Retrofit retrofit;
     private List<Country> countryList;
+
+    private List<UserOrder> currentStatusOrderList;
 
     private OrderActivity activity = this;
     private SpeeerApplication application;
@@ -115,6 +120,24 @@ public class OrderActivity extends AppCompatActivity
         });
     }
 
+    private void loadStatusOrder(UserAuth credentials, OperationStatus status) {
+        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
+
+        ProposalService proposalService = retrofit.create(ProposalService.class);
+        proposalService.getStatusProposals(model, credentials.getId(), status.name()).enqueue(new Callback<List<UserOrder>>() {
+            @Override
+            public void onResponse(Call<List<UserOrder>> call, Response<List<UserOrder>> response) {
+                currentStatusOrderList = response.body();
+                application.setCurrentStatusOrderList(currentStatusOrderList);
+            }
+
+            @Override
+            public void onFailure(Call<List<UserOrder>> call, Throwable t) {
+                Toast.makeText(activity, "error while get current status list", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +149,8 @@ public class OrderActivity extends AppCompatActivity
 
         retrofit = application.getRetrofit();
         credentials = application.getCredentials();
+
+        loadStatusOrder(credentials, OperationStatus.NEW);
 
         // todo float button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -147,6 +172,7 @@ public class OrderActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if (savedInstanceState == null) {
+
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new AllFragment()).commit();
             getSupportActionBar().setTitle("Active orders");
@@ -193,12 +219,25 @@ public class OrderActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
             loadUser(credentials);
             loadFullLocations(credentials);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
 //            Toast.makeText(activity, "error while update user", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment()).commit();
             getSupportActionBar().setTitle("Add orders");
         } else if (id == R.id.nav_orders) {
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+            loadStatusOrder(credentials, OperationStatus.NEW);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AllFragment()).commit();
             getSupportActionBar().setTitle("Active orders");
         } else if (id == R.id.nav_history) {

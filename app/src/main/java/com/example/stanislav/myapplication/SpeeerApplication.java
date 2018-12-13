@@ -6,6 +6,7 @@ import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
 import com.example.stanislav.myapplication.entity.enumeration.Localization;
 import com.example.stanislav.myapplication.entity.location.Country;
+import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 
 import java.util.List;
 
@@ -18,7 +19,10 @@ public class SpeeerApplication extends Application {
     private User user;
     private User updatedUser;
     private List<Country> location;
-    public static String BASE_URL = "http://c3dadf42.ngrok.io";
+
+    private List<UserOrder> currentStatusOrderList;
+
+    public static String BASE_URL = "http://ab35370f.ngrok.io";
 
     private Retrofit retrofit;
 
@@ -70,5 +74,13 @@ public class SpeeerApplication extends Application {
 
     public void setUpdatedUser(User updatedUser) {
         this.updatedUser = updatedUser;
+    }
+
+    public List<UserOrder> getCurrentStatusOrderList() {
+        return currentStatusOrderList;
+    }
+
+    public void setCurrentStatusOrderList(List<UserOrder> currentStatusOrderList) {
+        this.currentStatusOrderList = currentStatusOrderList;
     }
 }

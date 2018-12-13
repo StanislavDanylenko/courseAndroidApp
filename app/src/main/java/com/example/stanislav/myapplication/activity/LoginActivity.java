@@ -40,6 +40,7 @@ import com.example.stanislav.myapplication.entity.model.LocalProposalUserModel;
 import com.example.stanislav.myapplication.entity.model.UpdatePasswordModel;
 import com.example.stanislav.myapplication.entity.model.UserCredentialsModel;
 import com.example.stanislav.myapplication.entity.proposal.LocalProposal;
+import com.example.stanislav.myapplication.entity.proposal.OperationStatus;
 import com.example.stanislav.myapplication.entity.proposal.Proposal;
 import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 import com.example.stanislav.myapplication.retrofit.interfaze.LocationSevice;
@@ -370,7 +371,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 // Simulate network access.
                 //Thread.sleep(2000);
                 // todo request here
-
                return loginUser(mEmail, mPassword);
                 // todo to this line
 

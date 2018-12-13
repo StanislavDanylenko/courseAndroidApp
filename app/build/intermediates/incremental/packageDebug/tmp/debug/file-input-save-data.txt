@@ -1,18 +1,18 @@
 #Internal package file, do not edit.
-#Thu Dec 13 10:00:20 EET 2018
+#Thu Dec 13 21:34:13 EET 2018
 4.path=classes.dex
 8.set=DEX
 6.path=classes.dex
 0.baseType=DIRECTORY
 10.path=classes.dex
 5.baseType=DIRECTORY
-1.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/11
+1.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\21
 8.path=classes.dex
-3.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/21
+3.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 4.set=DEX
-5.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/12
-7.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/14
-9.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/16
+5.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
+7.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\18
+9.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\19
 1.baseType=DIRECTORY
 0.set=DEX
 6.baseType=DIRECTORY
@@ -25,16 +25,16 @@
 3.path=classes.dex
 10.set=DEX
 5.path=classes.dex
-0.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/20
+0.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\17
 7.path=classes.dex
 9.path=classes.dex
 6.set=DEX
-2.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/13
-4.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/15
+2.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\20
+4.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
 3.baseType=DIRECTORY
-6.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/17
-10.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/18
-8.base=/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/transforms/dexMerger/debug/19
+6.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\15
+10.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\16
+8.base=F\:\\PROJECTS\\Android\\Test\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
 2.set=DEX
 8.baseType=DIRECTORY
 9.set=DEX
