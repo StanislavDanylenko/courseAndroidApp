@@ -219,7 +219,7 @@ public class OrderActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
             loadUser(credentials);
             loadFullLocations(credentials);
             try {
@@ -231,7 +231,7 @@ public class OrderActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment()).commit();
             getSupportActionBar().setTitle("Add orders");
         } else if (id == R.id.nav_orders) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
             loadStatusOrder(credentials, OperationStatus.NEW);
             try {
                 Thread.sleep(1000);
@@ -241,13 +241,27 @@ public class OrderActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AllFragment()).commit();
             getSupportActionBar().setTitle("Active orders");
         } else if (id == R.id.nav_history) {
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            loadStatusOrder(credentials, OperationStatus.FINALIZED);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoryFragment()).commit();
             getSupportActionBar().setTitle("History");
         } else if (id == R.id.nav_canceled) {
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            loadStatusOrder(credentials, OperationStatus.CANCELED);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CanceledFragment()).commit();
             getSupportActionBar().setTitle("Canceled orders");
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
             loadUser(credentials);
             loadFullLocations(credentials);
             try {

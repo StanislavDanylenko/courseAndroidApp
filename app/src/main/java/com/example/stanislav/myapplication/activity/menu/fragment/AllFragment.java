@@ -142,20 +142,20 @@ public class AllFragment extends Fragment implements View.OnClickListener {
         StringBuilder sb = new StringBuilder();
 
         sb
-                .append("HUMIDITY: ")
-                .append(report.getHumidity())
-                .append('\n')
-                .append("RADIATION: ")
-                .append(report.getRadiation())
-                .append('\n')
-                .append("PRESSURE: ")
-                .append(report.getPressure())
-                .append('\n')
-                .append("AIR POLLUTION: ")
-                .append(report.getAirPollution())
-                .append('\n')
-                .append("TEMPERATURE: ")
-                .append(report.getTemperature());
+          .append("HUMIDITY: ")
+          .append(report.getHumidity())
+          .append('\n')
+          .append("RADIATION: ")
+          .append(report.getRadiation())
+          .append('\n')
+          .append("PRESSURE: ")
+          .append(report.getPressure())
+          .append('\n')
+          .append("AIR POLLUTION: ")
+          .append(report.getAirPollution())
+          .append('\n')
+          .append("TEMPERATURE: ")
+          .append(report.getTemperature());
 
         return sb.toString();
     }

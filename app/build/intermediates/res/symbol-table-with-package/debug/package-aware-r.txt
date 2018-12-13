@@ -1088,6 +1088,8 @@ id blocking
 id bottom
 id buttonPanel
 id cancel_action
+id canceled_layout
+id canceled_scroll
 id center
 id center_horizontal
 id center_vertical
@@ -1138,6 +1140,8 @@ id go_to_url_button
 id gone
 id group_divider
 id groups
+id hisory_layout
+id history_scroll
 id home
 id homeAsUp
 id icon
