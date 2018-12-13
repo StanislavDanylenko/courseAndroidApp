@@ -18,7 +18,7 @@ public class SpeeerApplication extends Application {
     private User user;
     private User updatedUser;
     private List<Country> location;
-    public static String BASE_URL = "http://d569cda2.ngrok.io";
+    public static String BASE_URL = "http://c3dadf42.ngrok.io";
 
     private Retrofit retrofit;
 

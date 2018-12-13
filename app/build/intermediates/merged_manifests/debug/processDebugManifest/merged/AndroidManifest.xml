@@ -25,7 +25,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.stanislav.myapplication.activity.MainActivity" >
+        <activity
+            android:name="com.example.stanislav.myapplication.activity.MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +41,8 @@
         </activity>
         <activity
             android:name="com.example.stanislav.myapplication.activity.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.stanislav.SHOW_LOGIN_ACTIVITY" />
 
@@ -49,6 +52,7 @@
         <activity
             android:name="com.example.stanislav.myapplication.activity.OrderActivity"
             android:label="@string/title_activity_order"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="com.stanislav.SHOW_ORDER_ACTIVITY" />

@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,6 +30,7 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="com.stanislav.SHOW_LOGIN_ACTIVITY" />
@@ -37,6 +40,7 @@
         <activity
             android:name=".activity.OrderActivity"
             android:label="@string/title_activity_order"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.stanislav.SHOW_ORDER_ACTIVITY" />

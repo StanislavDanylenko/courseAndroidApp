@@ -151,7 +151,7 @@ public class OrderActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new AllFragment()).commit();
-            getSupportActionBar().setTitle("Add orders");
+            getSupportActionBar().setTitle("Active orders");
             navigationView.setCheckedItem(R.id.nav_orders);
         }
     }
