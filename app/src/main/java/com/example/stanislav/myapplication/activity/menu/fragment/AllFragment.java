@@ -16,9 +16,15 @@ import com.example.stanislav.myapplication.R;
 
 public class AllFragment extends Fragment implements View.OnClickListener {
 
+    private LinearLayout.LayoutParams layoutParams;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
+        layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        layoutParams.setMargins(30, 20, 30, 0);
 
         super.onCreate(savedInstanceState);
     }
@@ -36,12 +42,6 @@ public class AllFragment extends Fragment implements View.OnClickListener {
 
             LinearLayout item = new LinearLayout(view.getContext());
             item.setBackgroundColor(Color.parseColor("#ffffff"));
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-            layoutParams.setMargins(30, 20, 30, 0);
-
 
             Button button = new Button(view.getContext());
             button.setId(i);

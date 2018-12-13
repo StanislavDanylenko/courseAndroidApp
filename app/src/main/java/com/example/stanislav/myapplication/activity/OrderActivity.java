@@ -66,6 +66,7 @@ public class OrderActivity extends AppCompatActivity
                 if (response.body() != null) {
                     user = response.body();
                     application.setUser(user);
+                    Toast.makeText(activity, "Successfully update", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -125,9 +126,6 @@ public class OrderActivity extends AppCompatActivity
 
         retrofit = application.getRetrofit();
         credentials = application.getCredentials();
-        loadUser(credentials);
-        loadFullLocations(credentials);
-
 
         // todo float button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -195,6 +193,9 @@ public class OrderActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_add) {
+            loadUser(credentials);
+            loadFullLocations(credentials);
+//            Toast.makeText(activity, "error while update user", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment()).commit();
             getSupportActionBar().setTitle("Add orders");
         } else if (id == R.id.nav_orders) {
@@ -207,7 +208,14 @@ public class OrderActivity extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CanceledFragment()).commit();
             getSupportActionBar().setTitle("Canceled orders");
         } else if (id == R.id.nav_profile) {
-            //Toast.makeText(this, "email" + credentials.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Loading...", Toast.LENGTH_LONG).show();
+            loadUser(credentials);
+            loadFullLocations(credentials);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+
+            }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
             getSupportActionBar().setTitle("Profile");
         } else if (id == R.id.nav_exit) {
