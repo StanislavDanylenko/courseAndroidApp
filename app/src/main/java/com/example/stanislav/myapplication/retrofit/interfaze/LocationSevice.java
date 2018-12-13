@@ -12,6 +12,6 @@ import retrofit2.http.POST;
 public interface LocationSevice {
 
     @POST("mobile/location/full")
-    Call<List<Country>> getUser(@Body UserCredentialsModel model);
+    Call<List<Country>> getFullLocation(@Body UserCredentialsModel model);
 
 }

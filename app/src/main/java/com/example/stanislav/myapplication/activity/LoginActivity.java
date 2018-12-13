@@ -32,6 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.stanislav.myapplication.R;
+import com.example.stanislav.myapplication.SpeeerApplication;
 import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
 import com.example.stanislav.myapplication.entity.location.Country;
@@ -45,6 +46,7 @@ import com.example.stanislav.myapplication.retrofit.interfaze.LocationSevice;
 import com.example.stanislav.myapplication.retrofit.interfaze.ProposalService;
 import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,16 +61,35 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    SpeeerApplication application;
+
     public static final String ACTION ="com.stanislav.SHOW_ORDER_ACTIVITY";
     public static final String ACTION_TO_MAIN ="com.stanislav.SHOW_CHANGE_URL_ACTIVITY";
 
     public static final String SERVER_URL = "serverUrl";
-    private static String BASE_URL = "http://8eb489af.ngrok.io";
+    private static String BASE_URL;
     SharedPreferences sharedPreferences;
 
     public void goToChangeUrl (View view) {
         Intent intent = new Intent(ACTION_TO_MAIN);
         startActivity(intent);
+    }
+
+    private boolean loginUser(String email, String password) throws IOException {
+        Retrofit retrofit = application.getRetrofit();
+
+        UserService userService = retrofit.create(UserService.class);
+
+        Response<UserAuth> userAuth = userService.loginUser(email, password).execute();
+        UserAuth userAuthEntity = userAuth.body();
+        System.out.println(userAuthEntity.toString());
+
+        if (userAuthEntity != null) {
+            userAuthEntity.setPassword(password);
+            application.setCredentials(userAuthEntity);
+            return true;
+        }
+        return false;
     }
 
     private void loadText() {
@@ -81,13 +102,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com", "world"
-    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -102,6 +116,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        application = (SpeeerApplication) this.getApplication();
+
+        BASE_URL = SpeeerApplication.BASE_URL;
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -353,42 +371,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //Thread.sleep(2000);
                 // todo request here
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE_URL)
-                        .addConverterFactory(JacksonConverterFactory.create())
-                        .build();
-
-                UserService userService = retrofit.create(UserService.class);
-                // todo uncomment it
-                Response<UserAuth> userAuth = userService.loginUser(mEmail, mPassword).execute();
-                UserAuth userAuthEntity = userAuth.body();
-                System.out.println(userAuthEntity.toString());
-
-                if (userAuthEntity == null) {
-                    return false;
-                }
+               return loginUser(mEmail, mPassword);
                 // todo to this line
 
                 // ------------------------------------------------
 
-                UserCredentialsModel model = new UserCredentialsModel(mEmail, mPassword);
-                // todo here get Full User request
-                /*Response<User> userResponse = userService.getUser(model, userAuthEntity.getId()).execute();
-                User user = userResponse.body();
-                System.out.println(user.toString());
 
-                if (user == null) {
-                    return false;
-                }*/
-                // todo here get Full Location request
-                /*LocationSevice locationSevice = retrofit.create(LocationSevice.class);
-                Response<List<Country>> countryListResponse = locationSevice.getUser(model).execute();
-                List<Country> countryList = countryListResponse.body();
-                System.out.println(countryList);
 
-                if (countryList != null) {
-                    return true;
-                }*/
                 // todo here get populated point Proposals
                 /*ProposalService proposalService = retrofit.create(ProposalService.class);
                 Response<List<LocalProposal>> listProposalResponse = proposalService.getProposals(model, userAuthEntity.getDefaultPopulatedPoint()).execute();
@@ -407,15 +396,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (proposalList != null) {
                     return true;
                 }*/
-                // todo here get user status Order
-               /* ProposalService proposalService = retrofit.create(ProposalService.class);
-                Response<List<UserOrder>> listProposalResponse = proposalService.getStatusProposals(model, userAuthEntity.getId(), "STATUS").execute();
-                List<UserOrder> proposalList = listProposalResponse.body();
-                System.out.println(proposalList);
 
-                if (proposalList != null) {
-                    return true;
-                }*/
                 // todo here get user status Order
                 /*ProposalService proposalService = retrofit.create(ProposalService.class);
                 Response<List<UserOrder>> listProposalResponse = proposalService.getAllUsersProposals(model, userAuthEntity.getId()).execute();
@@ -425,16 +406,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (proposalList != null) {
                     return true;
                 }*/
-                // todo here update user
-                /*user.setFirstName("changedFirstName");
 
-                Response<User> userUpdateResponse = userService.updateUser(user, userAuthEntity.getId()).execute();
-                User updatedUser = userUpdateResponse.body();
-                System.out.println(updatedUser.toString());
-
-                if (updatedUser != null) {
-                    return true;
-                }*/
                 // todo here update password
                 /*UpdatePasswordModel passwordModel = new UpdatePasswordModel(user.getId(), mPassword, "us");
 
@@ -465,18 +437,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (Exception e) {
                 return false;
             }
-
-
-
-
-            if (DUMMY_CREDENTIALS[0].equals(mEmail)) {
-                // Account exists, return true if the password matches.
-                return DUMMY_CREDENTIALS[1].equals(mPassword);
-            }
-
-
-            // return false if bad credentials
-            return false;
         }
 
         @Override

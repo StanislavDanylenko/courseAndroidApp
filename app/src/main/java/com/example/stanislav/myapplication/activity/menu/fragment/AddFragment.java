@@ -12,6 +12,9 @@ import com.example.stanislav.myapplication.R;
 
 public class AddFragment extends Fragment {
 
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

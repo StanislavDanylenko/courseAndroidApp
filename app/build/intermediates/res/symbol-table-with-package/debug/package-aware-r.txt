@@ -1073,6 +1073,7 @@ id action_settings
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_main
 id add
 id alertTitle
 id all
@@ -1186,6 +1187,14 @@ id parent_matrix
 id password
 id percent
 id pin
+id profile_country
+id profile_email
+id profile_first_name
+id profile_last_name
+id profile_localization
+id profile_patronymic
+id profile_point
+id profile_region
 id progress_circular
 id progress_horizontal
 id radio
@@ -1416,6 +1425,7 @@ string action_sign_in_short
 string app_name
 string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
+string change_url
 string character_counter_content_description
 string character_counter_pattern
 string error_field_required
@@ -1425,7 +1435,9 @@ string error_invalid_password
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
+string last_name
 string mtrl_chip_close_icon_content_description
+string name
 string nav_header_desc
 string nav_header_subtitle
 string nav_header_title
@@ -1436,6 +1448,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string patronymic
 string permission_rationale
 string prompt_email
 string prompt_password
@@ -1443,6 +1456,7 @@ string search_menu_title
 string status_bar_notification_info_overflow
 string title_activity_login
 string title_activity_order
+string update
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

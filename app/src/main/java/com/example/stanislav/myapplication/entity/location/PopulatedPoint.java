@@ -24,9 +24,7 @@ public class PopulatedPoint {
 
     @Override
     public String toString() {
-        return "PopulatedPoint{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
 
 }
