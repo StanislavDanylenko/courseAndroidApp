@@ -23,10 +23,12 @@ import com.example.stanislav.myapplication.activity.menu.fragment.AllFragment;
 import com.example.stanislav.myapplication.activity.menu.fragment.CanceledFragment;
 import com.example.stanislav.myapplication.activity.menu.fragment.HistoryFragment;
 import com.example.stanislav.myapplication.activity.menu.fragment.ProfileFragment;
+import com.example.stanislav.myapplication.background.MyService;
 import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
 import com.example.stanislav.myapplication.entity.location.Country;
 import com.example.stanislav.myapplication.entity.model.UserCredentialsModel;
+import com.example.stanislav.myapplication.entity.proposal.LocalProposal;
 import com.example.stanislav.myapplication.entity.proposal.OperationStatus;
 import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 import com.example.stanislav.myapplication.retrofit.interfaze.LocationSevice;
@@ -46,7 +48,9 @@ public class OrderActivity extends AppCompatActivity
     private User user;
     private UserAuth credentials;
     private Retrofit retrofit;
+
     private List<Country> countryList;
+    private List<LocalProposal> proposals;
 
     private List<UserOrder> currentStatusOrderList;
 
@@ -138,6 +142,24 @@ public class OrderActivity extends AppCompatActivity
         });
     }
 
+    private void loadProposals(UserAuth credentials, Long pointId) {
+        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
+
+        ProposalService proposalService = retrofit.create(ProposalService.class);
+        proposalService.getProposals(model, pointId).enqueue(new Callback<List<LocalProposal>>() {
+            @Override
+            public void onResponse(Call<List<LocalProposal>> call, Response<List<LocalProposal>> response) {
+                proposals = response.body();
+                application.setProposals(proposals);
+            }
+
+            @Override
+            public void onFailure(Call<List<LocalProposal>> call, Throwable t) {
+                Toast.makeText(activity, "error while get current status list", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,6 +192,11 @@ public class OrderActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        startService(
+                new Intent(OrderActivity.this, MyService.class));
+
 
         if (savedInstanceState == null) {
 
@@ -221,7 +248,7 @@ public class OrderActivity extends AppCompatActivity
         if (id == R.id.nav_add) {
             Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
             loadUser(credentials);
-            loadFullLocations(credentials);
+            loadProposals(credentials, credentials.getDefaultPopulatedPoint());
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -279,5 +306,11 @@ public class OrderActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopService(new Intent(OrderActivity.this, MyService.class));
+        super.onDestroy();
     }
 }

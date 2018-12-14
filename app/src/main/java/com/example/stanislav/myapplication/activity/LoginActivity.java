@@ -368,34 +368,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
-                //Thread.sleep(2000);
-                // todo request here
                return loginUser(mEmail, mPassword);
-                // todo to this line
-
-                // ------------------------------------------------
-
-
-
-                // todo here get populated point Proposals
-                /*ProposalService proposalService = retrofit.create(ProposalService.class);
-                Response<List<LocalProposal>> listProposalResponse = proposalService.getProposals(model, userAuthEntity.getDefaultPopulatedPoint()).execute();
-                List<LocalProposal> proposalList = listProposalResponse.body();
-                System.out.println(proposalList);
-
-                if (proposalList != null) {
-                    return true;
-                }*/
-                // todo here get user status Order
-               /* ProposalService proposalService = retrofit.create(ProposalService.class);
-                Response<List<UserOrder>> listProposalResponse = proposalService.getStatusProposals(model, userAuthEntity.getId(), "STATUS").execute();
-                List<UserOrder> proposalList = listProposalResponse.body();
-                System.out.println(proposalList);
-
-                if (proposalList != null) {
-                    return true;
-                }*/
 
                 // todo here get user status Order
                 /*ProposalService proposalService = retrofit.create(ProposalService.class);
@@ -415,21 +388,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 System.out.println(updatedUser.toString());
 
                 if (updatedUser != null) {
-                    return true;
-                }*/
-                // todo here add Order
-                /*LocalProposalUserModel proposalModel = new LocalProposalUserModel();
-                proposalModel.setPopulatedPointId(userAuthEntity.getDefaultPopulatedPoint());
-                proposalModel.setTargetCoordinates(new Double[] {50.7, 78.3});
-                proposalModel.setUserId(userAuthEntity.getId());
-                proposalModel.setProposalId(1L);
-
-                ProposalService proposalService = retrofit.create(ProposalService.class);
-                Response<UserOrder> proposalResponse = proposalService.addProposal(proposalModel).execute();
-                UserOrder proposal = proposalResponse.body();
-                System.out.println(proposal);
-
-                if (proposal != null) {
                     return true;
                 }*/
 
