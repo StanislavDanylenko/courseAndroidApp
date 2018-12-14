@@ -82,7 +82,7 @@ public class OrderActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(activity, "error while update user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_update_user, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -104,7 +104,7 @@ public class OrderActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(activity, "error while get user", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_while_get_user, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -122,7 +122,7 @@ public class OrderActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<List<Country>> call, Throwable t) {
-                Toast.makeText(activity, "error while get fLocation", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_while_get_fLocation, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -140,7 +140,7 @@ public class OrderActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<List<UserOrder>> call, Throwable t) {
-                Toast.makeText(activity, "error while get current status list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_while_get_c_status, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -158,7 +158,7 @@ public class OrderActivity extends AppCompatActivity
 
             @Override
             public void onFailure(Call<List<LocalProposal>> call, Throwable t) {
-                Toast.makeText(activity, "error while get current status list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, R.string.error_while_get_c_s_list, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -205,7 +205,7 @@ public class OrderActivity extends AppCompatActivity
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new AllFragment()).commit();
-            getSupportActionBar().setTitle("Active orders");
+            getSupportActionBar().setTitle(getString(R.string.active_orders));
             navigationView.setCheckedItem(R.id.nav_orders);
         }
     }
@@ -262,9 +262,9 @@ public class OrderActivity extends AppCompatActivity
             }
 //            Toast.makeText(activity, "error while update user", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment()).commit();
-            getSupportActionBar().setTitle("Add orders");
+            getSupportActionBar().setTitle(getString(R.string.add_orders));
         } else if (id == R.id.nav_orders) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, getString(R.string.loading), Toast.LENGTH_SHORT).show();
             loadStatusOrder(credentials, OperationStatus.NEW);
             try {
                 Thread.sleep(1000);
@@ -272,9 +272,9 @@ public class OrderActivity extends AppCompatActivity
 
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AllFragment()).commit();
-            getSupportActionBar().setTitle("Active orders");
+            getSupportActionBar().setTitle(getString(R.string.active_orders));
         } else if (id == R.id.nav_history) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, getString(R.string.loading), Toast.LENGTH_SHORT).show();
             loadStatusOrder(credentials, OperationStatus.FINALIZED);
             try {
                 Thread.sleep(1000);
@@ -282,9 +282,9 @@ public class OrderActivity extends AppCompatActivity
 
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoryFragment()).commit();
-            getSupportActionBar().setTitle("History");
+            getSupportActionBar().setTitle(getString(R.string.history));
         } else if (id == R.id.nav_canceled) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, getString(R.string.loading), Toast.LENGTH_SHORT).show();
             loadStatusOrder(credentials, OperationStatus.CANCELED);
             try {
                 Thread.sleep(1000);
@@ -292,9 +292,9 @@ public class OrderActivity extends AppCompatActivity
 
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CanceledFragment()).commit();
-            getSupportActionBar().setTitle("Canceled orders");
+            getSupportActionBar().setTitle(getString(R.string.canceled_orders));
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(activity, "Loading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, getString(R.string.loading), Toast.LENGTH_SHORT).show();
             loadUser(credentials);
             loadFullLocations(credentials);
             try {
@@ -303,7 +303,7 @@ public class OrderActivity extends AppCompatActivity
 
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-            getSupportActionBar().setTitle("Profile");
+            getSupportActionBar().setTitle(getString(R.string.profile));
         } else if (id == R.id.nav_exit) {
             Intent intent = new Intent(MainActivity.ACTION);
             startActivity(intent);

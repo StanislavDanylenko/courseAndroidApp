@@ -85,7 +85,7 @@ public class AllFragment extends Fragment implements View.OnClickListener {
 
                 Button button = new Button(view.getContext());
                 button.setGravity(Gravity.CENTER);
-                button.setText("Show report");
+                button.setText(getString(R.string.show_report));
                 button.setId((int) (long) order.getDroneId());
                 button.setOnClickListener(this);
                 button.setBackgroundColor(Color.parseColor("#2a68ee"));
@@ -96,7 +96,7 @@ public class AllFragment extends Fragment implements View.OnClickListener {
             }
         } else {
             TextView info = new TextView(view.getContext());
-            info.setText("No active orders or upload please");
+            info.setText(getString(R.string.no_active_order_or_upload));
 
             itemContainer.addView(info, layoutParams);
         }
@@ -113,7 +113,7 @@ public class AllFragment extends Fragment implements View.OnClickListener {
         if (report != null) {
             reportString = getReportString(report);
         } else {
-            reportString = "Not allowed yet";
+            reportString = getString(R.string.not_allowed_yet);
         }
 
 
@@ -142,19 +142,19 @@ public class AllFragment extends Fragment implements View.OnClickListener {
         StringBuilder sb = new StringBuilder();
 
         sb
-          .append("HUMIDITY: ")
+          .append(R.string.humidity)
           .append(report.getHumidity())
           .append('\n')
-          .append("RADIATION: ")
+          .append(R.string.rediation)
           .append(report.getRadiation())
           .append('\n')
-          .append("PRESSURE: ")
+          .append(R.string.pressure)
           .append(report.getPressure())
           .append('\n')
-          .append("AIR POLLUTION: ")
+          .append(R.string.air_pollution)
           .append(report.getAirPollution())
           .append('\n')
-          .append("TEMPERATURE: ")
+          .append(R.string.temperature)
           .append(report.getTemperature());
 
         return sb.toString();

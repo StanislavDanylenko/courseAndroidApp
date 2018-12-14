@@ -104,7 +104,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 TextView proposalTitleLabel = new TextView(view.getContext());
                 proposalTitleLabel.setGravity(Gravity.CENTER);
                 proposalTitleLabel.setTypeface(null, Typeface.BOLD);
-                proposalTitleLabel.setText("TITLE");
+                proposalTitleLabel.setText(getString(R.string.title));
                 item.addView(proposalTitleLabel, layoutParamsHeader);
 
                 TextView proposalTitle = new TextView(view.getContext());
@@ -117,7 +117,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 TextView descriptionLabel = new TextView(view.getContext());
                 descriptionLabel.setGravity(Gravity.CENTER);
                 descriptionLabel.setTypeface(null, Typeface.BOLD);
-                descriptionLabel.setText("DESCRIPTION");
+                descriptionLabel.setText(getString(R.string.вуіскшзешщт));
                 item.addView(descriptionLabel, layoutParamsHeader);
 
                 TextView description = new TextView(view.getContext());
@@ -130,7 +130,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 TextView priceLabel = new TextView(view.getContext());
                 priceLabel.setGravity(Gravity.CENTER);
                 priceLabel.setTypeface(null, Typeface.BOLD);
-                priceLabel.setText("PRICE");
+                priceLabel.setText(getString(R.string.price));
                 item.addView(priceLabel, layoutParamsHeader);
 
                 TextView price = new TextView(view.getContext());
@@ -142,7 +142,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 TextView xLabel = new TextView(view.getContext());
                 xLabel.setGravity(Gravity.CENTER);
                 xLabel.setTypeface(null, Typeface.BOLD);
-                xLabel.setText("Latitude");
+                xLabel.setText(getString(R.string.latitude));
                 item.addView(xLabel, layoutParamsHeader);
 
                 EditText editX = new EditText(view.getContext());
@@ -155,7 +155,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 TextView yLabel = new TextView(view.getContext());
                 yLabel.setGravity(Gravity.CENTER);
                 yLabel.setTypeface(null, Typeface.BOLD);
-                yLabel.setText("Longitude");
+                yLabel.setText(getString(R.string.longitude));
                 item.addView(yLabel, layoutParamsHeader);
 
                 EditText editY = new EditText(view.getContext());
@@ -167,7 +167,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
 
                 Button button = new Button(view.getContext());
                 button.setGravity(Gravity.CENTER);
-                button.setText("BUY");
+                button.setText(getString(R.string.buy));
                 button.setId(i);
                 button.setOnClickListener(this);
                 button.setBackgroundColor(Color.parseColor("#2a68ee"));
@@ -179,7 +179,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
             }
         } else {
             TextView info = new TextView(view.getContext());
-            info.setText("No active proposals");
+            info.setText(getString(R.string.no_active_proposals));
 
             itemContainer.addView(info, layoutParams);
         }
@@ -210,12 +210,12 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         proposalService.addProposal(model).enqueue(new Callback<UserOrder>() {
             @Override
             public void onResponse(Call<UserOrder> call, Response<UserOrder> response) {
-                Toast.makeText(thisActivity.getContext(), "Success. Check it in your order list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(thisActivity.getContext(), R.string.success_adding_order, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<UserOrder> call, Throwable t) {
-                Toast.makeText(thisActivity.getContext(), "error while adding order", Toast.LENGTH_SHORT).show();
+                Toast.makeText(thisActivity.getContext(), R.string.erroe_adding_order, Toast.LENGTH_SHORT).show();
             }
         });
     }

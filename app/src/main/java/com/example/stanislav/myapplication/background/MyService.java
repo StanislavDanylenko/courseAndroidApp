@@ -22,7 +22,7 @@ public class MyService extends Service {
     private Thread update;
 
     public void notificate(int count) {
-        showNotification(this, "Status changed", String.format("(%d) order(s) changed status.", count), new Intent(this, OrderActivity.class));
+        showNotification(this, getString(R.string.status_changed), String.format(getString(R.string.n_orders_changed_status), count), new Intent(this, OrderActivity.class));
     }
 
     public MyService() {
@@ -36,14 +36,10 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Toast.makeText(this, "Служба создана",
-                Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "Служба запущена",
-                Toast.LENGTH_SHORT).show();
         SpeeerApplication application = (SpeeerApplication) this.getApplication();
         update = new ServerUpdate(application, this, this);
         update.start();
