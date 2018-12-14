@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stanislav.myapplication.R;
@@ -75,7 +76,7 @@ public class OrderActivity extends AppCompatActivity
                 if (response.body() != null) {
                     user = response.body();
                     application.setUser(user);
-                    Toast.makeText(activity, "Successfully update", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, R.string.success_update, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -97,6 +98,8 @@ public class OrderActivity extends AppCompatActivity
                 user = response.body();
                 application.setUpdatedUser(user);
                 application.setUser(user);
+                TextView userName  = findViewById(R.id.userName);
+                userName.setText(user.getFirstName() + " " + user.getLastName());
             }
 
             @Override
@@ -207,6 +210,7 @@ public class OrderActivity extends AppCompatActivity
         }
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -219,6 +223,8 @@ public class OrderActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        TextView userEmail  = findViewById(R.id.userEmail);
+        userEmail.setText(credentials.getEmail());
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.order, menu);
         return true;
