@@ -64,4 +64,14 @@
     <string name="loading">Завантаження...</string>
     <string name="n_orders_changed_status">(%d) замовлень змінили статус.</string>
     <string name="status_changed">Статус замовлення змінено</string>
+    <string name="location">Місце знаходження:</string>
+    <string name="status">Статус:</string>
+    <string name="title_card">Назва:</string>
+    <string name="price_card">Ціна:</string>
+    <string name="set_latitude">Вкажіть ширину тут!</string>
+    <string name="set_longitude">Вкажіть довготу тут!</string>
+    <string name="localization">Локалізація</string>
+    <string name="country">Країна</string>
+    <string name="region">Регіон</string>
+    <string name="pop_point">Населений пункт</string>
 </resources>

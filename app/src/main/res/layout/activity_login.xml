@@ -67,14 +67,13 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorAccent"
+                android:background="@drawable/button_accept"
                 android:text="@string/action_sign_in"
                 android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp"/>
 
         </LinearLayout>
 
@@ -83,14 +82,11 @@
     <Button
         android:id="@+id/go_to_url_button"
         android:onClick="goToChangeUrl"
-        style="?android:textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/holo_orange_dark"
+        android:background="@drawable/button_changed"
         android:text="@string/change_url"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+        android:textColor="@android:color/white" />
 
 
 </LinearLayout>

@@ -5,141 +5,133 @@
     build-mode="COLD"
     density="xxhdpi"
     format="10"
-    ir-eligibility="R_CLASS_CHANGE"
+    ir-eligibility="FIELD_TYPE_CHANGE"
     plugin-version="3.2.1"
-    timestamp="1544776876473"
-    token="-9058081464859284518"
+    timestamp="1545865128269"
+    token="460470941732914257"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1910" />
+        duration="35688" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="49" />
+        duration="3003" />
     <task
         name="verifier"
-        duration="7" />
+        duration="369" />
 
     <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+        location="F:\PROJECTS\Android\Test\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
         type="SPLIT" />
     <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+        location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
         type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-        type="SPLIT" />
-    <artifact
-        location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1544772983536"
-        verifier="FULL_BUILD_REQUESTED" >
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1545858465395"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1544776876473"
+        ir-eligibility="CLASS_ADDED"
+        timestamp="1545862145902"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/resources/instant-run/debug/resources-debug.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="R_CLASS_CHANGE"
+        timestamp="1545863628539"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/sdanylenko/Work/Projects/Android/Projects/Test/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\instant-run-apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="FIELD_TYPE_CHANGE"
+        timestamp="1545865128269"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\resources\instant-run\debug\resources-debug.apk"
+            type="SPLIT" />
+        <artifact
+            location="F:\PROJECTS\Android\Test\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
+            type="SPLIT" />
     </build>
 
 </instant-run>

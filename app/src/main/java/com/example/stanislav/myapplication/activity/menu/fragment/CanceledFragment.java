@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.example.stanislav.myapplication.R;
 import com.example.stanislav.myapplication.SpeeerApplication;
 import com.example.stanislav.myapplication.entity.proposal.Report;
 import com.example.stanislav.myapplication.entity.proposal.UserOrder;
+import com.example.stanislav.myapplication.view.HorizontalRulerView;
 
 import java.util.List;
 
@@ -58,28 +60,33 @@ public class CanceledFragment extends Fragment implements View.OnClickListener {
 
                 LinearLayout item = new LinearLayout(view.getContext());
                 item.setOrientation(LinearLayout.VERTICAL);
-                item.setBackgroundColor(Color.parseColor("#ffffff"));
+                item.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.card));
 
 
                 TextView proposal = new TextView(view.getContext());
                 proposal.setGravity(Gravity.CENTER);
                 proposal.setTypeface(null, Typeface.BOLD);
-                proposal.setText(order.getLocalProposal().getProposal().getName());
+                proposal.setText(getString(R.string.title_card) + " " + order.getLocalProposal().getProposal().getName());
                 item.addView(proposal, layoutParams);
+
+                HorizontalRulerView rulerView = new HorizontalRulerView(view.getContext());
+                item.addView(rulerView);
+
 
                 TextView point = new TextView(view.getContext());
                 point.setGravity(Gravity.CENTER);
-                point.setText(order.getLocalProposal().getPopulatedPoint().getName());
+                point.setText(getString(R.string.location) + " " +order.getLocalProposal().getPopulatedPoint().getName());
                 item.addView(point);
 
                 TextView price = new TextView(view.getContext());
                 price.setGravity(Gravity.CENTER);
-                price.setText(order.getPrice().toString());
+                price.setText(getString(R.string.price_card) + " " + order.getPrice().toString());
                 item.addView(price, layoutParams);
 
                 TextView status = new TextView(view.getContext());
                 status.setGravity(Gravity.CENTER);
-                status.setText(order.getStatus().name());
+                status.setTypeface(null, Typeface.BOLD);
+                status.setText(getString(R.string.status) + " " +order.getStatus().name());
                 item.addView(status, layoutParams);
 
                 Button button = new Button(view.getContext());
@@ -87,7 +94,8 @@ public class CanceledFragment extends Fragment implements View.OnClickListener {
                 button.setText(getString(R.string.show_report));
                 button.setId((int) (long) order.getDroneId());
                 button.setOnClickListener(this);
-                button.setBackgroundColor(Color.parseColor("#2a68ee"));
+                button.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_accept));
+                button.setTextColor(Color.WHITE);
                 item.addView(button, layoutParams);
 
 

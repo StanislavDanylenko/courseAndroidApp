@@ -24,7 +24,7 @@ public class SpeeerApplication extends Application {
 
     private List<UserOrder> currentStatusOrderList;
 
-    public static String BASE_URL = "http://b5aed410.ngrok.io";
+    public static String BASE_URL = "http://cc2777e0.ngrok.io";
 
     private Retrofit retrofit;
 

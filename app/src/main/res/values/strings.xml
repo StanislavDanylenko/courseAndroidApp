@@ -65,4 +65,14 @@
     <string name="loading">Loading...</string>
     <string name="status_changed">Status changed</string>
     <string name="n_orders_changed_status">(%d) order(s) changed status.</string>
+    <string name="location">Location:</string>
+    <string name="status">Status:</string>
+    <string name="title_card">Title:</string>
+    <string name="price_card">Price:</string>
+    <string name="set_latitude">Set latitude here!</string>
+    <string name="set_longitude">Set longitude here!</string>
+    <string name="localization">Localization</string>
+    <string name="country">Country</string>
+    <string name="region">Region</string>
+    <string name="pop_point">Populated point</string>
 </resources>

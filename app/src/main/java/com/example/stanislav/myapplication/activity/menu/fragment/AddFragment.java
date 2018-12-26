@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ import com.example.stanislav.myapplication.entity.proposal.Report;
 import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 import com.example.stanislav.myapplication.retrofit.interfaze.ProposalService;
 import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
+import com.example.stanislav.myapplication.view.HorizontalRulerView;
 
 import java.util.List;
 
@@ -53,6 +55,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
     private LinearLayout.LayoutParams layoutParams;
     private LinearLayout.LayoutParams layoutParamsHeader;
     private LinearLayout.LayoutParams layoutParamsBody;
+    private LinearLayout.LayoutParams layoutParamsInput;
 
 
     @Override
@@ -74,12 +77,17 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         layoutParamsHeader = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(30, 20, 30, 5);
+        layoutParamsHeader.setMargins(30, 20, 30, 5);
 
         layoutParamsBody = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(30, 5, 30, 20);
+        layoutParamsBody.setMargins(30, 5, 30, 20);
+
+        layoutParamsInput = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParamsInput.setMargins(50, 0, 50, 20);
 
         super.onCreate(savedInstanceState);
     }
@@ -98,7 +106,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
 
                 LinearLayout item = new LinearLayout(view.getContext());
                 item.setOrientation(LinearLayout.VERTICAL);
-                item.setBackgroundColor(Color.parseColor("#ffffff"));
+                item.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.card));
 
 
                 TextView proposalTitleLabel = new TextView(view.getContext());
@@ -139,6 +147,10 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 item.addView(price, layoutParamsBody);
 
 
+                HorizontalRulerView rulerView = new HorizontalRulerView(view.getContext());
+                item.addView(rulerView);
+
+
                 TextView xLabel = new TextView(view.getContext());
                 xLabel.setGravity(Gravity.CENTER);
                 xLabel.setTypeface(null, Typeface.BOLD);
@@ -149,7 +161,8 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 editX.setInputType(InputType.TYPE_CLASS_PHONE);
                 editX.setGravity(Gravity.CENTER);
                 editX.setId(100 + i);
-                item.addView(editX, layoutParamsBody);
+                editX.setHint(getString(R.string.set_latitude));
+                item.addView(editX, layoutParamsInput);
 
 
                 TextView yLabel = new TextView(view.getContext());
@@ -162,7 +175,8 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 editY.setInputType(InputType.TYPE_CLASS_PHONE);
                 editY.setGravity(Gravity.CENTER);
                 editY.setId(1000 + i);
-                item.addView(editY, layoutParamsBody);
+                editY.setHint(getString(R.string.set_longitude));
+                item.addView(editY, layoutParamsInput);
 
 
                 Button button = new Button(view.getContext());
@@ -170,7 +184,8 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 button.setText(getString(R.string.buy));
                 button.setId(i);
                 button.setOnClickListener(this);
-                button.setBackgroundColor(Color.parseColor("#2a68ee"));
+                button.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_accept));
+                button.setTextColor(Color.WHITE);
                 item.addView(button, layoutParams);
 
 
