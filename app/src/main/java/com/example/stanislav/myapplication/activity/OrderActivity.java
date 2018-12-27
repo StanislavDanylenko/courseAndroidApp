@@ -1,6 +1,7 @@
 package com.example.stanislav.myapplication.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,6 +38,7 @@ import com.example.stanislav.myapplication.retrofit.interfaze.ProposalService;
 import com.example.stanislav.myapplication.retrofit.interfaze.UserService;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,13 +72,36 @@ public class OrderActivity extends AppCompatActivity
 
         UserService userService = retrofit.create(UserService.class);
 
-        userService.updateUser(updatedUser, credentials.getId()).enqueue(new Callback<User>() {
+        userService.updateUser(application.getCookies(), updatedUser, credentials.getId()).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.body() != null) {
+                if (response.body() != null && response.isSuccessful()) {
                     user = response.body();
                     application.setUser(user);
+
+
+                    String localization;
+
+                    switch (user.getLocalization()) {
+                        case ENGLISH:
+                            localization = "en";
+                            break;
+                        case UKRAINIAN:
+                            localization = "uk";
+                            break;
+                        default:
+                            localization = "en";
+                    }
+
+                    Locale locale = new Locale(localization);
+                    Locale.setDefault(locale);
+                    Configuration configuration = new Configuration();
+                    configuration.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(configuration, null);
+
                     Toast.makeText(activity, R.string.success_update, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(activity, R.string.error_update_user, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -92,7 +117,7 @@ public class OrderActivity extends AppCompatActivity
         UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
         UserService userService = retrofit.create(UserService.class);
 
-        userService.getUser(model, credentials.getId()).enqueue(new Callback<User>() {
+        userService.getUser(application.getCookies(), credentials.getId()).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
@@ -113,7 +138,7 @@ public class OrderActivity extends AppCompatActivity
         UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         LocationSevice locationSevice = retrofit.create(LocationSevice.class);
-        locationSevice.getFullLocation(model).enqueue(new Callback<List<Country>>() {
+        locationSevice.getFullLocation(application.getCookies()).enqueue(new Callback<List<Country>>() {
             @Override
             public void onResponse(Call<List<Country>> call, Response<List<Country>> response) {
                 countryList = response.body();
@@ -131,7 +156,7 @@ public class OrderActivity extends AppCompatActivity
         UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
-        proposalService.getStatusProposals(model, credentials.getId(), status.name()).enqueue(new Callback<List<UserOrder>>() {
+        proposalService.getStatusProposals(application.getCookies(), credentials.getId(), status.name()).enqueue(new Callback<List<UserOrder>>() {
             @Override
             public void onResponse(Call<List<UserOrder>> call, Response<List<UserOrder>> response) {
                 currentStatusOrderList = response.body();
@@ -149,7 +174,7 @@ public class OrderActivity extends AppCompatActivity
         UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
-        proposalService.getProposals(model, pointId).enqueue(new Callback<List<LocalProposal>>() {
+        proposalService.getProposals(application.getCookies(), pointId).enqueue(new Callback<List<LocalProposal>>() {
             @Override
             public void onResponse(Call<List<LocalProposal>> call, Response<List<LocalProposal>> response) {
                 proposals = response.body();

@@ -222,10 +222,14 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         LocalProposalUserModel model = new LocalProposalUserModel(user.getId(), user.getDefaultPopulatedPoint(), proposalId, coords);
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
-        proposalService.addProposal(model).enqueue(new Callback<UserOrder>() {
+        proposalService.addProposal(application.getCookies(), model).enqueue(new Callback<UserOrder>() {
             @Override
             public void onResponse(Call<UserOrder> call, Response<UserOrder> response) {
-                Toast.makeText(thisActivity.getContext(), R.string.success_adding_order, Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    Toast.makeText(thisActivity.getContext(), R.string.success_adding_order, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(thisActivity.getContext(), R.string.erroe_adding_order, Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

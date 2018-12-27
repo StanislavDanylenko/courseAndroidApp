@@ -21,6 +21,7 @@ public class SpeeerApplication extends Application {
     private User updatedUser;
     private List<Country> location;
     private List<LocalProposal> proposals;
+    private String cookies;
 
     private List<UserOrder> currentStatusOrderList;
 
@@ -92,5 +93,13 @@ public class SpeeerApplication extends Application {
 
     public void setProposals(List<LocalProposal> proposals) {
         this.proposals = proposals;
+    }
+
+    public String getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(String cookies) {
+        this.cookies = cookies;
     }
 }

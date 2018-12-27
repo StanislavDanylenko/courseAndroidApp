@@ -82,12 +82,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         UserService userService = retrofit.create(UserService.class);
 
         Response<UserAuth> userAuth = userService.loginUser(email, password).execute();
+
         UserAuth userAuthEntity = userAuth.body();
         System.out.println(userAuthEntity.toString());
 
         if (userAuthEntity != null) {
             userAuthEntity.setPassword(password);
             application.setCredentials(userAuthEntity);
+            String cookies = userAuth.headers().get("Set-Cookie");
+            application.setCookies(cookies);
             return true;
         }
         return false;

@@ -8,6 +8,7 @@ import com.example.stanislav.myapplication.entity.model.UserCredentialsModel;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -19,13 +20,13 @@ public interface UserService {
     Call<UserAuth> loginUser(@Query("email") String email,
                              @Query("password") String password);
 
-    @POST("mobile/{id}")
-    Call<User> getUser(@Body UserCredentialsModel model, @Path("id") Long id);
+    @GET("mobile/{id}")
+    Call<User> getUser(@Header("Cookie") String cookie, @Path("id") Long id);
 
     @PUT("mobile/{id}")
-    Call<User> updateUser(@Body User model, @Path("id") Long id);
+    Call<User> updateUser(@Header("Cookie") String cookie, @Body User model, @Path("id") Long id);
 
     @POST("mobile/password")
-    Call<User> updatePassword(@Body UpdatePasswordModel model);
+    Call<User> updatePassword(@Header("Cookie") String cookie, @Body UpdatePasswordModel model);
 
 }

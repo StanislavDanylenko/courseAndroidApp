@@ -93,35 +93,53 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <fr.ganfra.materialspinner.MaterialSpinner
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/localization"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
                 android:id="@+id/profile_localization"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                app:ms_multiline="false"
-                app:ms_hint="@string/localization"
-                app:ms_enableFloatingLabel="true"
-                app:ms_enableErrorLabel="false"
-                app:ms_floatingLabelText="@string/localization"
-                app:ms_alignLabels="false"/>
+                android:layout_height="37dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:layout_marginTop="10dp"/>
 
             <Spinner
                 android:id="@+id/profile_country"
                 android:layout_width="match_parent"
-                android:layout_height="37dp"
+                android:layout_height="37dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/region"
                 android:layout_marginTop="10dp"/>
 
             <Spinner
                 android:id="@+id/profile_region"
                 android:layout_width="match_parent"
-                android:layout_height="37dp"
+                android:layout_height="37dp"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pop_point"
                 android:layout_marginTop="10dp"/>
 
             <Spinner
                 android:id="@+id/profile_point"
                 android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_marginTop="10dp" />
+                android:layout_height="37dp"/>
 
             <Button
                 android:id="@+id/go_to_url_button"

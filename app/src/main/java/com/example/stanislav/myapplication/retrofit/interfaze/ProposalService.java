@@ -10,24 +10,26 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ProposalService {
 
-    @POST("mobile/proposal/point/{id}")
-    Call<List<LocalProposal>> getProposals(@Body UserCredentialsModel model, @Path("id") Long id);
+    @GET("mobile/proposal/point/{id}")
+    Call<List<LocalProposal>> getProposals(@Header("Cookie") String cookie, @Path("id") Long id);
 
-    @POST("mobile/user/{id}/status/{status}")
-    Call<List<UserOrder>> getStatusProposals(@Body UserCredentialsModel model,
+    @GET("mobile/user/{id}/status/{status}")
+    Call<List<UserOrder>> getStatusProposals(@Header("Cookie") String cookie,
                                              @Path("id") Long id,
                                              @Path("status") String status);
 
-    @POST("mobile/user/{id}")
-    Call<List<UserOrder>> getAllUsersProposals(@Body UserCredentialsModel model,
+    @GET("mobile/user/{id}")
+    Call<List<UserOrder>> getAllUsersProposals(@Header("Cookie") String cookie,
                                                @Path("id") Long id);
 
     @POST("mobile/proposal")
-    Call<UserOrder> addProposal(@Body LocalProposalUserModel model);
+    Call<UserOrder> addProposal(@Header("Cookie") String cookie, @Body LocalProposalUserModel model);
 
 }

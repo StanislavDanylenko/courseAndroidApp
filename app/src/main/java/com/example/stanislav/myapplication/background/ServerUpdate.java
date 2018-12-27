@@ -59,7 +59,7 @@ public class ServerUpdate extends Thread {
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
         try {
-            List<UserOrder> ordersUpdated = proposalService.getStatusProposals(model, credentials.getId(), OperationStatus.NEW.name()).execute().body();
+            List<UserOrder> ordersUpdated = proposalService.getStatusProposals(application.getCookies(), credentials.getId(), OperationStatus.NEW.name()).execute().body();
 
             if (ordersUpdated.size() != ordersUpdated.size()) {
                 res += Math.abs(ordersUpdated.size() - ordersUpdated.size());
