@@ -50,8 +50,8 @@
     <string name="humidity">"HUMIDITY: "</string>
     <string name="rediation">"RADIATION: "</string>
     <string name="pressure">"PRESSURE: "</string>
-    <string name="air_pollution">AIR POLLUTION:</string>
-    <string name="temperature">TEMPERATURE:</string>
+    <string name="air_pollution">"AIR POLLUTION: "</string>
+    <string name="temperature">"TEMPERATURE: "</string>
     <string name="no_canceled_orders">No canceled orders</string>
     <string name="no_finalized_orders">No finalized orders</string>
     <string name="error_update_user">Error while update user</string>

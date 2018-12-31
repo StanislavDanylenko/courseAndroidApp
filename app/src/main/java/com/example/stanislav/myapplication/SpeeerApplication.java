@@ -10,6 +10,7 @@ import com.example.stanislav.myapplication.entity.UserAuth;
 import com.example.stanislav.myapplication.entity.enumeration.Localization;
 import com.example.stanislav.myapplication.entity.location.Country;
 import com.example.stanislav.myapplication.entity.proposal.LocalProposal;
+import com.example.stanislav.myapplication.entity.proposal.Report;
 import com.example.stanislav.myapplication.entity.proposal.UserOrder;
 
 import java.util.List;
@@ -127,6 +128,38 @@ public class SpeeerApplication extends Application {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
+    }
+
+    public String getReportString(Report report) {
+        StringBuilder sb = new StringBuilder();
+
+        String humidity = (report.getHumidity() == -9999) ? "-" : "" + report.getHumidity();
+        String radiation = (report.getRadiation() == -9999) ? "-" : "" + report.getRadiation();
+        String pressure = (report.getPressure() == -9999) ? "-" : "" + report.getPressure();
+        String airPollution = (report.getAirPollution() == -9999) ? "-" : "" + report.getAirPollution();
+        String temperature = (report.getTemperature() == -9999) ? "-" : "" + report.getTemperature();
+
+        sb
+                .append(R.string.humidity)
+                .append(humidity)
+                .append('\n')
+
+                .append(R.string.rediation)
+                .append(radiation)
+                .append('\n')
+
+                .append(R.string.pressure)
+                .append(pressure)
+                .append('\n')
+
+                .append(R.string.air_pollution)
+                .append(airPollution)
+                .append('\n')
+
+                .append(R.string.temperature)
+                .append(temperature);
+
+        return sb.toString();
     }
 
 

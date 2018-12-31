@@ -117,7 +117,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
         String reportString;
         if (report != null) {
-            reportString = getReportString(report);
+            reportString = application.getReportString(report);
         } else {
             reportString = getString(R.string.not_allowed_yet);
         }
@@ -144,25 +144,4 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
         return null;
     }
 
-    private String getReportString(Report report) {
-        StringBuilder sb = new StringBuilder();
-
-        sb
-                .append(getString(R.string.humidity))
-                .append(report.getHumidity())
-                .append('\n')
-                .append(getString(R.string.rediation))
-                .append(report.getRadiation())
-                .append('\n')
-                .append(getString(R.string.pressure))
-                .append(report.getPressure())
-                .append('\n')
-                .append(getString(R.string.air_pollution))
-                .append(report.getAirPollution())
-                .append('\n')
-                .append(getString(R.string.temperature))
-                .append(report.getTemperature());
-
-        return sb.toString();
-    }
 }
