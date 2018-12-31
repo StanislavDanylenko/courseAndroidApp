@@ -30,6 +30,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.stanislav.myapplication.R;
 import com.example.stanislav.myapplication.SpeeerApplication;
@@ -51,6 +52,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -62,7 +65,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    SpeeerApplication application;
+    private SpeeerApplication application;
+    private static final String COOKIE = "Cookie";
 
     public static final String ACTION ="com.stanislav.SHOW_ORDER_ACTIVITY";
     public static final String ACTION_TO_MAIN ="com.stanislav.SHOW_CHANGE_URL_ACTIVITY";
@@ -76,8 +80,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         startActivity(intent);
     }
 
+    private boolean pingServer(String cookies, Retrofit retrofit) throws IOException {
+
+        LocationSevice locationSevice = retrofit.create(LocationSevice.class);
+        Response<List<Country>> response = locationSevice.getFullLocation(cookies).execute();
+
+        return response.isSuccessful();
+    }
+
     private boolean loginUser(String email, String password) throws IOException {
+
         Retrofit retrofit = application.getRetrofit();
+
+        /*String cookiesOld = application.loadPreferences(COOKIE);
+        if (cookiesOld != null && !"".equals(cookiesOld)) {
+            application.savePreferences(COOKIE, null);
+            if (pingServer(cookiesOld, retrofit)) {
+                application.setCookies(cookiesOld);
+                return true;
+            }
+        }*/
 
         UserService userService = retrofit.create(UserService.class);
 
@@ -86,11 +108,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         UserAuth userAuthEntity = userAuth.body();
         System.out.println(userAuthEntity.toString());
 
-        if (userAuthEntity != null) {
+        if (userAuthEntity != null && userAuth.isSuccessful()) {
             userAuthEntity.setPassword(password);
             application.setCredentials(userAuthEntity);
             String cookies = userAuth.headers().get("Set-Cookie");
             application.setCookies(cookies);
+            application.savePreferences(COOKIE, cookies);
             return true;
         }
         return false;

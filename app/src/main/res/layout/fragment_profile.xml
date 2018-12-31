@@ -98,7 +98,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/localization"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textColor="#a3a3a3"
+                android:textSize="12sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"/>
 
             <Spinner
                 android:id="@+id/profile_localization"
@@ -110,7 +114,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/country"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textColor="#a3a3a3"
+                android:textSize="12sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"/>
 
             <Spinner
                 android:id="@+id/profile_country"
@@ -122,7 +130,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/region"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textColor="#a3a3a3"
+                android:textSize="12sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"/>
 
             <Spinner
                 android:id="@+id/profile_region"
@@ -134,7 +146,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/pop_point"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:textColor="#a3a3a3"
+                android:textSize="12sp"
+                android:layout_marginStart="5sp"
+                android:layout_marginLeft="5sp"/>
 
             <Spinner
                 android:id="@+id/profile_point"

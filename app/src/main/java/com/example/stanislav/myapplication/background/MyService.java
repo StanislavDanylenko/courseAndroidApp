@@ -16,10 +16,13 @@ import com.example.stanislav.myapplication.R;
 import com.example.stanislav.myapplication.SpeeerApplication;
 import com.example.stanislav.myapplication.activity.OrderActivity;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class MyService extends Service {
 
     private Thread update;
+    private AtomicInteger notificationId = new AtomicInteger(1);
 
     public void notificate(int count) {
         showNotification(this, getString(R.string.status_changed), String.format(getString(R.string.n_orders_changed_status), count), new Intent(this, OrderActivity.class));
@@ -55,7 +58,6 @@ public class MyService extends Service {
     public void showNotification(Context context, String title, String body, Intent intent) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        int notificationId = 1;
         String channelId = "channel-01";
         String channelName = "Channel Name";
         int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -79,7 +81,7 @@ public class MyService extends Service {
         );
         mBuilder.setContentIntent(resultPendingIntent);
 
-        notificationManager.notify(notificationId, mBuilder.build());
+        notificationManager.notify(notificationId.getAndIncrement(), mBuilder.build());
     }
 
 }

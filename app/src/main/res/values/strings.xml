@@ -75,4 +75,5 @@
     <string name="country">Country</string>
     <string name="region">Region</string>
     <string name="pop_point">Populated point</string>
+    <string name="incorrect_input">Incorrect input</string>
 </resources>

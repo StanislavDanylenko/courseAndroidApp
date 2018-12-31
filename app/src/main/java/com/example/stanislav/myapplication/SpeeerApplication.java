@@ -1,6 +1,9 @@
 package com.example.stanislav.myapplication;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.stanislav.myapplication.entity.User;
 import com.example.stanislav.myapplication.entity.UserAuth;
@@ -25,17 +28,15 @@ public class SpeeerApplication extends Application {
 
     private List<UserOrder> currentStatusOrderList;
 
-    public static String BASE_URL = "http://cc2777e0.ngrok.io";
+    public static String BASE_URL;
 
     private Retrofit retrofit;
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
     }
 
     public UserAuth getCredentials() {
@@ -64,6 +65,9 @@ public class SpeeerApplication extends Application {
 
 
     public Retrofit getRetrofit() {
+        if (retrofit == null) {
+            createRetrofit(BASE_URL);
+        }
         return retrofit;
     }
 
@@ -102,4 +106,28 @@ public class SpeeerApplication extends Application {
     public void setCookies(String cookies) {
         this.cookies = cookies;
     }
+
+    public void setSharedPreferences(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
+    }
+
+    public void savePreferences(String key, String value) {
+        SharedPreferences.Editor ed = sharedPreferences.edit();
+        ed.putString(key, value);
+        ed.commit();
+    }
+
+    public String loadPreferences(String key) {
+        return sharedPreferences.getString(key, "");
+    }
+
+    public void createRetrofit(String url) {
+        BASE_URL = url;
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+    }
+
+
 }

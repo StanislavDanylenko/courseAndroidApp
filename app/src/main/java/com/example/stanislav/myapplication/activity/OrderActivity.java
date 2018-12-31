@@ -66,9 +66,29 @@ public class OrderActivity extends AppCompatActivity
         EditText patronymic = findViewById(R.id.profile_patronymic);
 
         User updatedUser = application.getUpdatedUser();
-        updatedUser.setFirstName(firstName.getText().toString());
-        updatedUser.setLastName(lastName.getText().toString());
-        updatedUser.setPatronymic(patronymic.getText().toString());
+
+        String firstNameValue = firstName.getText().toString();
+        String lastNameValue = lastName.getText().toString();
+        String patronymicValue = patronymic.getText().toString();
+
+        if ("".equals(firstNameValue)) {
+            firstName.setError(getString(R.string.incorrect_input));
+            return;
+        }
+
+        if ("".equals(lastNameValue)) {
+            lastName.setError(getString(R.string.incorrect_input));
+            return;
+        }
+
+        if ("".equals(patronymicValue)) {
+            patronymic.setError(getString(R.string.incorrect_input));
+            return;
+        }
+
+        updatedUser.setFirstName(firstNameValue);
+        updatedUser.setLastName(lastNameValue);
+        updatedUser.setPatronymic(patronymicValue);
 
         UserService userService = retrofit.create(UserService.class);
 
@@ -114,7 +134,7 @@ public class OrderActivity extends AppCompatActivity
     }
 
     private void loadUser(UserAuth credentials) {
-        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
+
         UserService userService = retrofit.create(UserService.class);
 
         userService.getUser(application.getCookies(), credentials.getId()).enqueue(new Callback<User>() {
@@ -135,7 +155,6 @@ public class OrderActivity extends AppCompatActivity
     }
 
     private void loadFullLocations(UserAuth credentials) {
-        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         LocationSevice locationSevice = retrofit.create(LocationSevice.class);
         locationSevice.getFullLocation(application.getCookies()).enqueue(new Callback<List<Country>>() {
@@ -153,7 +172,6 @@ public class OrderActivity extends AppCompatActivity
     }
 
     private void loadStatusOrder(UserAuth credentials, OperationStatus status) {
-        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
         proposalService.getStatusProposals(application.getCookies(), credentials.getId(), status.name()).enqueue(new Callback<List<UserOrder>>() {
@@ -171,7 +189,6 @@ public class OrderActivity extends AppCompatActivity
     }
 
     private void loadProposals(UserAuth credentials, Long pointId) {
-        UserCredentialsModel model = new UserCredentialsModel(credentials.getEmail(), credentials.getPassword());
 
         ProposalService proposalService = retrofit.create(ProposalService.class);
         proposalService.getProposals(application.getCookies(), pointId).enqueue(new Callback<List<LocalProposal>>() {

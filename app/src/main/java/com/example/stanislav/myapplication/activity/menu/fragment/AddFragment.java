@@ -158,7 +158,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 item.addView(xLabel, layoutParamsHeader);
 
                 EditText editX = new EditText(view.getContext());
-                editX.setInputType(InputType.TYPE_CLASS_PHONE);
+                editX.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                 editX.setGravity(Gravity.CENTER);
                 editX.setId(100 + i);
                 editX.setHint(getString(R.string.set_latitude));
@@ -172,7 +172,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
                 item.addView(yLabel, layoutParamsHeader);
 
                 EditText editY = new EditText(view.getContext());
-                editY.setInputType(InputType.TYPE_CLASS_PHONE);
+                editY.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                 editY.setGravity(Gravity.CENTER);
                 editY.setId(1000 + i);
                 editY.setHint(getString(R.string.set_longitude));
@@ -209,12 +209,23 @@ public class AddFragment extends Fragment implements View.OnClickListener {
         EditText editX = thisActivity.findViewById(100 + id);
         EditText editY = thisActivity.findViewById(1000 + id);
 
-        double xValue = Double.parseDouble(editX.getText().toString());
-        double yValue = Double.parseDouble(editY.getText().toString());
+
+        Double xValue = null;
+        try {
+            xValue = Double.parseDouble(editX.getText().toString());
+        } catch (NumberFormatException e) {
+            editX.setError(getString(R.string.incorrect_input));
+            return;
+        }
+        Double yValue = null;
+        try {
+            yValue = Double.parseDouble(editY.getText().toString());
+        } catch (NumberFormatException e) {
+            editY.setError(getString(R.string.incorrect_input));
+            return;
+        }
 
         addOrder(userAuth, proposals.get(id).getProposal().getId(), new Double[] {xValue, yValue});
-
-       // Toast.makeText(v.getContext(), proposals.get(id).getProposal().getName() + " " + xValue + " " + yValue, Toast.LENGTH_SHORT).show();
     }
 
     private void addOrder(UserAuth credentials, long proposalId, Double[] coords) {
