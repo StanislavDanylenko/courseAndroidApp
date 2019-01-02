@@ -55,6 +55,7 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
 
         LinearLayout itemContainer = (LinearLayout) view.findViewById(R.id.hisory_layout);
 
+        int pos = 0;
         if (currentStatusOrderList.size() > 0) {
             for (UserOrder order : currentStatusOrderList) {
 
@@ -92,13 +93,14 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
                 Button button = new Button(view.getContext());
                 button.setGravity(Gravity.CENTER);
                 button.setText(getString(R.string.show_report));
-                button.setId((int) (long) order.getDroneId());
+                button.setId(pos);
                 button.setOnClickListener(this);
                 button.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.button_accept));
                 button.setTextColor(Color.WHITE);
                 item.addView(button, layoutParams);
 
                 itemContainer.addView(item, layoutParams);
+                pos++;
             }
         } else {
             TextView info = new TextView(view.getContext());
@@ -136,9 +138,9 @@ public class HistoryFragment extends Fragment implements View.OnClickListener {
     }
 
     private Report findReport(int id) {
-        for (UserOrder order : currentStatusOrderList) {
-            if (order.getDroneId() == id) {
-                return order.getReport();
+        for (int i = 0; i < currentStatusOrderList.size(); i++) {
+            if (i == id) {
+                return currentStatusOrderList.get(i).getReport();
             }
         }
         return null;

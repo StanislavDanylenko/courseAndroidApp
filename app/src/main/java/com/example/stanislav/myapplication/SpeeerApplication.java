@@ -140,23 +140,23 @@ public class SpeeerApplication extends Application {
         String temperature = (report.getTemperature() == -9999) ? "-" : "" + report.getTemperature();
 
         sb
-                .append(R.string.humidity)
+                .append(getString(R.string.humidity))
                 .append(humidity)
                 .append('\n')
 
-                .append(R.string.rediation)
+                .append(getString(R.string.rediation))
                 .append(radiation)
                 .append('\n')
 
-                .append(R.string.pressure)
+                .append(getString(R.string.pressure))
                 .append(pressure)
                 .append('\n')
 
-                .append(R.string.air_pollution)
+                .append(getString(R.string.air_pollution))
                 .append(airPollution)
                 .append('\n')
 
-                .append(R.string.temperature)
+                .append(getString(R.string.temperature))
                 .append(temperature);
 
         return sb.toString();
