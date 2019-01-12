@@ -46,11 +46,11 @@
     <string name="success_adding_order">Успішно. Перевірте свій список замовлень</string>
     <string name="erroe_adding_order">Помилка при додаванні замовлення</string>
     <string name="not_allowed_yet">Ще не доступний</string>
-    <string name="humidity">"ВОЛОГІСТЬ: "</string>
-    <string name="rediation">"РАДІАЦІЯ: "</string>
-    <string name="pressure">"АТМОСФЕРНИЙ ТИСК: "</string>
-    <string name="air_pollution">"ЗАБРУДНЕНІСТЬ ПОВІТРЯ: "</string>
-    <string name="temperature">"ТЕМПЕРАТУРА: "</string>
+    <string name="humidity">"ВОЛОГІСТЬ, %: "</string>
+    <string name="rediation">"РАДІАЦІЯ, Зв.: "</string>
+    <string name="pressure">"АТМОСФЕРНИЙ ТИСК, Па: "</string>
+    <string name="air_pollution">"ЗАБРУДНЕНІСТЬ ПОВІТРЯ, %: "</string>
+    <string name="temperature">"ТЕМПЕРАТУРА, ℃: "</string>
     <string name="no_canceled_orders">Відсутні відхилені замовлення</string>
     <string name="no_finalized_orders">Відсутні виконані замовлення</string>
     <string name="error_update_user">Помилка при оновленні даних користувача</string>
