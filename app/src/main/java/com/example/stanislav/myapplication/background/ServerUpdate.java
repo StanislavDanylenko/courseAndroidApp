@@ -35,9 +35,9 @@ public class ServerUpdate extends Thread {
     public void run() {
         while (!isInterrupted()) {
             try {
-                sleep(1000 * 60);
+                sleep(1000 * 30);
                 orders = application.getCurrentStatusOrderList();
-                int count = processOrderList();
+                int count = processOrderList    ();
                 if (count > 0) {
                     service.notificate(count);
                 }
